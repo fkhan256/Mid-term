@@ -1,9 +1,16 @@
 <resources>
-    <string name="app_name">CalculatorApp</string>
+    <string name="app_name">My ApplicationQ2</string>
     <string-array name="operations">
         <item>Addition</item>
         <item>Subtraction</item>
         <item>Multiplication</item>
         <item>Division</item>
+    </string-array>
+    <string-array name="fruits">
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Cherry</item>
+        <item>Date</item>
+        <item>Elderberry</item>
     </string-array>
 </resources>

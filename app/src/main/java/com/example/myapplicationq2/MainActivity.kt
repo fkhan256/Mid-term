@@ -1,7 +1,9 @@
 package com.example.myapplicationq2
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -10,36 +12,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val etNumber1 = findViewById<EditText>(R.id.etNumber1)
-        val etNumber2 = findViewById<EditText>(R.id.etNumber2)
-        val spinner = findViewById<Spinner>(R.id.spinner)
-        val btnCalculate = findViewById<Button>(R.id.btnCalculate)
-        val tvResult = findViewById<TextView>(R.id.tvResult)
+        val openCalculatorButton = findViewById<Button>(R.id.openCalculatorButton)
+        val openFruitAppButton = findViewById<Button>(R.id.openFruitAppButton)
+        val messageTextView = findViewById<TextView>(R.id.messageTextView)
 
-        btnCalculate.setOnClickListener {
-            val num1 = etNumber1.text.toString().toDouble()
-            val num2 = etNumber2.text.toString().toDouble()
-            val operation = spinner.selectedItem.toString()
+        // Display message if any
+        val message = intent.getStringExtra("message")
+        messageTextView.text = message
 
-            val result = when (operation) {
-                "Addition" -> num1 + num2
-                "Subtraction" -> num1 - num2
-                "Multiplication" -> num1 * num2
-                "Division" -> num1 / num2
-                else -> 0.0
-            }
-
-            tvResult.text = "Result: $result"
+        openCalculatorButton.setOnClickListener {
+            val intent = Intent(this, CalculatorActivity::class.java)
+            intent.putExtra("message", "Navigated from Main Activity")
+            startActivity(intent)
         }
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                // Do something when an item is selected
-            }
+        openFruitAppButton.setOnClickListener {
+            val intent = Intent(this, FavoriteFruitActivity::class.java)
+            intent.putExtra("message", "Navigated from Main Activity")
+            startActivity(intent)
         }
     }
 }
